@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\PlanType;
 use App\Schedule;
 use App\Station;
 use Illuminate\Http\Request;
@@ -105,14 +106,14 @@ class ScheduleController extends Controller
         }
 
         $response = ['data' => $calendar];
-
         return json_encode($response, JSON_UNESCAPED_SLASHES);
     }
 
     public function modal(Schedule $schedule) {
         $stations = Station::all();
+        $plan_types = PlanType::all();
         $task_types = ['D', 'N', '_'];
-        $response = ['data' => \View::make('schedule.partials.modal', compact('schedule', 'stations', 'task_types'))->render()];
+        $response = ['data' => \View::make('schedule.partials.modal', compact('schedule', 'stations', 'task_types', 'plan_types'))->render()];
         return json_encode($response, JSON_UNESCAPED_SLASHES);
     }
 }
