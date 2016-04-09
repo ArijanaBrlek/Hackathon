@@ -92,6 +92,19 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                {!! Form::label('preferences_employee_types', 'Preferred employee types: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    <div class="col-sm-6">
+                        <select name="preferences_employee_types[]" multiple="multiple" class="form-control select2" data-placeholder="Select employee types">
+                            @foreach($employee_types as $employee_type)
+                                <option value="{{ $employee_type->id }}" {{ in_array($employee_type->id, $employee->preferences_employee_types->pluck('employee_type_id')->toArray()) ? 'selected' : '' }}>{{ $employee_type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
