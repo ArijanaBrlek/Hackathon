@@ -4,6 +4,11 @@
         <i class="fa fa-calendar"></i> <span>Schedule</span>
     </a>
 </li>
+<li class="active">
+    <a href="{{ route('plans.index') }}">
+        <i class="fa fa-calendar"></i> <span>Plan</span>
+    </a>
+</li>
 <li>
     <a href="{{ route('stations.index')  }}">
         <i class="fa fa-hospital-o"></i> <span>Stations</span>
