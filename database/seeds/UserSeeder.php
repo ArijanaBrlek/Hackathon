@@ -20,14 +20,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('administrator'),
         ]);
 
-        $employee = \App\User::create([
-            'name' => 'Employee',
-            'email' => 'employee@gmail.com',
-            'password' => bcrypt('employee'),
-        ]);
-
         $admin->assignRole('administrator');
-        $employee->assignRole('employee');
-
     }
 }
