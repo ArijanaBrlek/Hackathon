@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Station whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Station whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Team[] $teams
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Employee[] $employees
  */
 class Station extends Model
 {
@@ -25,5 +26,10 @@ class Station extends Model
     public function teams()
     {
         return $this->hasMany('App\Team');
+    }
+
+    public function employees()
+    {
+        return $this->hasMany('App\Employee');
     }
 }

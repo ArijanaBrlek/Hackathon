@@ -18,4 +18,8 @@ use Illuminate\Database\Eloquent\Model;
 class PreferencesPlanType extends Model
 {
     public $timestamps = false;
+
+    public function plan_type() {
+        return $this->belongsTo('App\PlanType');
+    }
 }

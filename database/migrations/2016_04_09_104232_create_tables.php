@@ -65,6 +65,10 @@ class CreateTables extends Migration
 
             $table->integer('plan_type_id')->unsigned();
             $table->foreign('plan_type_id')->references('id')->on('plan_types');
+
+            $table->integer('year');
+            $table->integer('week');
+            $table->integer('day');
         });
 
         Schema::create('shift_types', function(Blueprint $table) {
@@ -94,6 +98,24 @@ class CreateTables extends Migration
 
             $table->integer('employee_type_id')->unsigned();
             $table->foreign('employee_type_id')->references('id')->on('employee_types');
+        });
+
+        Schema::create('schedules', function(Blueprint $table) {
+            $table->increments('id');
+
+            $table->integer('year');
+            $table->integer('week');
+            $table->integer('day');
+            $table->integer('employee_id')->unsigned();
+            $table->foreign('employee_id')->references('id')->on('employees');
+
+            $table->integer('station_id')->unsigned();
+            $table->foreign('station_id')->references('id')->on('stations');
+
+            $table->string('type');
+            $table->integer('employee_task_id')->unsigned();
+            $table->foreign('employee_task_id')->references('id')->on('employee_types');
+            $table->timestamps();
         });
     }
 

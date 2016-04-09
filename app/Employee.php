@@ -36,8 +36,21 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Employee whereMobile($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Employee whereRemark($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Employee whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\PreferencesEmployeeType[] $preferences_employee_type
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\PreferencesPlanType[] $preferences_plan_type
+ * @property-read \App\Station $station
  */
 class Employee extends Model
 {
-    //
+    public function preferences_employee_types() {
+        return $this->hasMany('App\PreferencesEmployeeType');
+    }
+
+    public function preferences_plan_types() {
+        return $this->hasMany('App\PreferencesPlanType');
+    }
+
+    public function station() {
+        return $this->belongsTo('App\Station');
+    }
 }

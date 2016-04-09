@@ -18,4 +18,8 @@ use Illuminate\Database\Eloquent\Model;
 class PreferencesEmployeeType extends Model
 {
     public $timestamps = false;
+
+    public function employee_type() {
+        return $this->belongsTo('App\EmployeeType');
+    }
 }
