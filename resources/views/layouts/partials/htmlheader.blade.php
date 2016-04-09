@@ -25,5 +25,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/application.css') }}" rel="stylesheet">
 </head>
