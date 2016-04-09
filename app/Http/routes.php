@@ -26,3 +26,7 @@ Route::get('/ajax', 'ScheduleController@ajax');
 Route::get('/data', 'DataController@createInputFile');
 Route::get('/read_data', 'DataController@readOutputFile');
 Route::get('/modal/{schedule}', 'ScheduleController@modal');
+
+Route::get('/plan/ajax', 'PlanController@ajax');
+Route::resource('plans', 'PlanController');
+Route::post('/plan/update/{plan}', 'PlanController@updateAjax');

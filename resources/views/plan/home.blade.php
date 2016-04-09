@@ -11,7 +11,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Responsive Hover Table</h3>
-                <br /><a href="#" id="previous-week" data-week="0">Previous week</a><br />
+                <br /><a href="#" id="previous-week" data-week="0">Previous week<br />
                 <a href="#" id="next-week" data-week="2">Next week</a>
                 <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -60,21 +60,21 @@
             var table =  $('#example').DataTable({
 
             "ajax": {
-                'url': '/ajax',
+                'url': '/plan/ajax',
                 'data': function () {
                     return {week: currentWeek};
                 }
             },
                 "paging": true,
             });
-            table =  $('#example').DataTable();
-            $('#example tbody').on( 'click', '.day-shift', function () {
-                var scheduleId = $(this).attr('data-id');
-                $.getJSON('/modal/' + scheduleId, function(data) {
-                    $('#myModal').replaceWith(data.data);
-                    $('#myModal').modal('show');
-                });
-            } );
+//            table =  $('#example').DataTable();
+//            $('#example tbody').on( 'click', '.day-shift', function () {
+//                var scheduleId = $(this).attr('data-id');
+//                $.getJSON('/modal/' + scheduleId, function(data) {
+//                    $('#myModal').replaceWith(data.data);
+//                    $('#myModal').modal('show');
+//                });
+//            } );
 
         } );
 
@@ -84,10 +84,10 @@
     <script>
         var currentWeek = 1;
         $(function() {
-           $('#next-week').click(function() {
+            $('#next-week').click(function() {
                currentWeek++;
                $('#example').DataTable().ajax.reload();
-           });
+            });
 
             $('#previous-week').click(function() {
                 if(currentWeek > 1) {
@@ -95,7 +95,16 @@
                 }
                 $('#example').DataTable().ajax.reload();
             });
+
+            $(document).on('change', '.plan-type', function() {
+                var planId = $(this).attr('data-plan-id');
+
+                $.post('/plan/update/' + planId, {
+                   plan_type_code: $(this).val()
+                });
+            });
         });
+
     </script>
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ URL::asset('plugins/select2/select2.min.js') }}"></script>
