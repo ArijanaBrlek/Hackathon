@@ -88,8 +88,8 @@ class ScheduleController extends Controller
         //
     }
 
-    public function ajax() {
-        $schedules = Schedule::all();
+    public function ajax(Request $request) {
+        $schedules = Schedule::whereWeek($request->get('week', 1))->get();
         $grouped = $schedules->groupBy('employee_id');
 
         $calendar = [];

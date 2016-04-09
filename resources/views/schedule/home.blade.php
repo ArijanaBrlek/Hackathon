@@ -11,6 +11,8 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Responsive Hover Table</h3>
+                <br /><a href="#" id="previous-week" data-week="0">Previous week<br />
+                <a href="#" id="next-week" data-week="2">Next week</a>
                 <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -55,7 +57,12 @@
     <script>
         $(document).ready(function() {
             var table =  $('#example').DataTable({
-                "ajax": '/ajax'
+                "ajax": {
+                    'url': '/ajax',
+                    'data': function() {
+                        return {week: currentWeek};
+                    }
+                }
             });
 
             table =  $('#example').DataTable();
@@ -76,7 +83,20 @@
     </script>
 
     <script>
+        var currentWeek = 1;
+        $(function() {
+           $('#next-week').click(function() {
+               currentWeek++;
+               $('#example').DataTable().ajax.reload();
+           });
 
+            $('#previous-week').click(function() {
+                if(currentWeek > 1) {
+                    currentWeek--;
+                }
+                $('#example').DataTable().ajax.reload();
+            });
+        });
     </script>
 
 @endsection
