@@ -9,12 +9,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <meta name="description" content="Pratt - Free Bootstrap 3 Theme">
     <meta name="author" content="Alvarez.is - BlackTie.co">
 
-    <title>Acacha AdminLTE Laravel package template Landing page - Using Pratt</title>
-
-    <!-- Bootstrap core CSS -->
+    <title>ER Scheduler</title>
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
@@ -22,7 +18,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
     <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
     <script src="{{ asset('/js/smoothscroll.js') }}"></script>
-
 
 </head>
 
@@ -39,6 +34,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             </button>
             <a class="navbar-brand" href="#"><b>adminlte-laravel</b></a>
         </div>
+
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#home" class="smoothScroll">Home</a></li>

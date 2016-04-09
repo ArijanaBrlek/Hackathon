@@ -4,7 +4,6 @@
 	Home
 @endsection
 
-
 @section('main-content')
 	<div class="container spark-screen">
 		<div class="row">
