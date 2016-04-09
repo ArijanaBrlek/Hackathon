@@ -34,6 +34,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Schedule extends Model
 {
+    protected $fillable = array('year', 'week', 'day', 'employee_id', 'station_id', 'type', 'employee_task_id', 'team_type_id');
+
     public function employee() {
         return $this->belongsTo('App\Employee');
     }
