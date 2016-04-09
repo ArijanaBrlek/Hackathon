@@ -16,6 +16,7 @@ class ScheduleSeeder extends Seeder
 
         foreach($employees as $employee) {
             $year = 2016;
+            $types = ['D', 'N', '_'];
             for($week = 1; $week <= 4; ++$week) {
                 for($day = 1; $day <= 7; ++$day) {
                     \App\Schedule::create([
@@ -24,7 +25,7 @@ class ScheduleSeeder extends Seeder
                         'day' => $day,
                         'employee_id' => $employee->id,
                         'station_id' => \App\Station::first()->id,
-                        'type' => 'D',
+                        'type' => $types[rand(0, 2)],
                         'employee_task_id' => $employee_task->id,
                     ]);
 
