@@ -27,6 +27,8 @@ class Team extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['station_id', 'team_type_id', 'employee_type_id'];
+
     public function team_type() {
         return $this->belongsTo('App\TeamType');
     }
