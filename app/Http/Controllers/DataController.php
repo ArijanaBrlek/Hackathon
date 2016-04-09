@@ -78,24 +78,20 @@ class DataController extends Controller
         if ($handle) {
             while (($line = fgets($handle)) !== false) {
                 $n++;
-                $dayTasks[] = explode("-", $line);
-                dump($dayTasks);
-//                $dayTasks[] = explode("-", $line);
-//                foreach ($dayTasks[0] as $task) {
-//                    $task = trim($task);
-//                    if ($task == "_") {
-//                        dump("day off");
-//                    } else {
-//                        var_dump($task);
-//                        $param[] =  str_split($task, 8);
-//                        dump($param);
-////                    $stationId = $param[0];
-////                    $typeId = $param[1];
-////                    $shift = $param[2];
-////                    $taskCode = $param[3];
-////                    dump($stationId, $typeId, $shift, $taskCode);
-//                    }
-//                }
+                $dayTasks = explode(" ", $line);
+                foreach ($dayTasks as $task) {
+                    $task = trim($task);
+                    if ($task == "_") {
+                        dump("day off");
+                    } else {
+                        $param =  explode("-", $task);
+                        $stationId = $param[0];
+                        $typeId = $param[1];
+                        $shift = $param[2];
+                        $taskCode = $param[3];
+                        dump($stationId, $typeId, $shift, $taskCode);
+                    }
+                }
 
             }
 
