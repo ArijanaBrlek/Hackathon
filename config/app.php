@@ -164,6 +164,8 @@ return [
          */
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
 
+        Spatie\Permission\PermissionServiceProvider::class,
+
     ],
 
     /*
@@ -212,6 +214,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+
     ],
 
 ];
