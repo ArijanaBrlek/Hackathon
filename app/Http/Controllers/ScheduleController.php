@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
+use App\Schedule;
+use App\Station;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\View\View;
 
 class ScheduleController extends Controller
 {
@@ -85,16 +89,30 @@ class ScheduleController extends Controller
     }
 
     public function ajax() {
-        $view = \View::make('schedule.ajax');
-        $bla = [];
-        for($i = 0; $i <= 3; ++$i) {
-            $bla[] = ["Nino",
-                $view->render(), $view->render(),$view->render(),$view->render(),$view->render(),$view->render(),$view->render()];
-        }
-        
-        $obj = new \StdClass();
-        $obj->data = $bla;
+        $schedules = Schedule::all();
+        $grouped = $schedules->groupBy('employee_id');
 
-        return json_encode($obj, JSON_UNESCAPED_SLASHES);
+        $calendar = [];
+        foreach($grouped as $employee_id => $schedules) {
+            $employee = Employee::find($employee_id);
+            $row = [];
+            $row[] = $employee->first_name . " " . $employee->last_name;
+            foreach($schedules as $schedule) {
+                $view = \View::make('schedule.ajax', compact('schedule'));
+                $row[] = $view->render();
+            }
+            $calendar[] = $row;
+        }
+
+        $response = ['data' => $calendar];
+
+        return json_encode($response, JSON_UNESCAPED_SLASHES);
+    }
+
+    public function modal(Schedule $schedule) {
+        $stations = Station::all();
+        $task_types = ['D', 'N', '_'];
+        $response = ['data' => \View::make('schedule.partials.modal', compact('schedule', 'stations', 'task_types'))->render()];
+        return json_encode($response, JSON_UNESCAPED_SLASHES);
     }
 }

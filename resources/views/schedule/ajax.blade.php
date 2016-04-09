@@ -1,8 +1,12 @@
 <div class="row">
     <div class="col-sm-6">
-        @include('schedule.partials.day')
+        @if ($schedule->type == 'D')
+            @include('schedule.partials.day')
+        @endif
     </div>
     <div class="col-sm-6">
-        @include('schedule.partials.night')
+        @if ($schedule->type == 'N')
+            @include('schedule.partials.night')
+        @endif
     </div>
 </div>

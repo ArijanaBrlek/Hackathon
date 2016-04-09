@@ -60,7 +60,14 @@
 
             table =  $('#example').DataTable();
             $('#example tbody').on( 'click', '.day-shift', function () {
-                console.log(table.cell(this).data());
+                var scheduleId = $(this).attr('data-id');
+                console.log(scheduleId);
+                $.getJSON('/modal/' + scheduleId, function(data) {
+                    $('#myModal').replaceWith(data.data);
+                    $('#myModal').modal('show');
+                });
+
+//                console.log(table.cell(this).data());
             } );
 
         } );

@@ -25,3 +25,4 @@ Route::resource('employees', 'EmployeeController');
 Route::get('/ajax', 'ScheduleController@ajax');
 Route::get('/data', 'DataController@createInputFile');
 Route::get('/read_data', 'DataController@readOutputFile');
+Route::get('/modal/{schedule}', 'ScheduleController@modal');
