@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.29 on 2016-04-08.
+ * Generated for Laravel 5.2.29 on 2016-04-09.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11325,6 +11325,71 @@ namespace {
         public static function offsetUnset($key){
             //Method inherited from \DebugBar\DebugBar            
             return \Barryvdh\Debugbar\LaravelDebugbar::offsetUnset($key);
+        }
+        
+    }
+
+
+    class AdminLTE extends \Acacha\AdminLTETemplateLaravel\Facades\AdminLTE{
+        
+        /**
+         * Home controller copy path.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function homeController(){
+            return \Acacha\AdminLTETemplateLaravel\AdminLTE::homeController();
+        }
+        
+        /**
+         * Auth controller copy path.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function authController(){
+            return \Acacha\AdminLTETemplateLaravel\AdminLTE::authController();
+        }
+        
+        /**
+         * Public assets copy path.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function publicAssets(){
+            return \Acacha\AdminLTETemplateLaravel\AdminLTE::publicAssets();
+        }
+        
+        /**
+         * Views copy path.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function views(){
+            return \Acacha\AdminLTETemplateLaravel\AdminLTE::views();
+        }
+        
+        /**
+         * Tests copy path.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function tests(){
+            return \Acacha\AdminLTETemplateLaravel\AdminLTE::tests();
+        }
+        
+        /**
+         * Resource assets copy path.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function resourceAssets(){
+            return \Acacha\AdminLTETemplateLaravel\AdminLTE::resourceAssets();
         }
         
     }
