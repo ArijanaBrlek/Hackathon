@@ -7,7 +7,13 @@
             </div>
             <div class="modal-body">
                 <div>
-                    forma
+                    {{ $schedule->id }}
+                    @foreach($stations as $station)
+                        {{ $station->id }}
+                    @endforeach
+                    @foreach($task_types as $task_type)
+                        {{ $task_type }}
+                    @endforeach
                 </div>
             </div>
             <div class="modal-footer">
