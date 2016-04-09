@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EmployeeType;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -32,7 +33,9 @@ class StationsController extends Controller
      */
     public function create()
     {
-        return view('stations.create');
+        $employee_types = EmployeeType::all();
+
+        return view('stations.create', compact('employee_types'));
     }
 
     /**
@@ -74,8 +77,9 @@ class StationsController extends Controller
     public function edit($id)
     {
         $station = Station::findOrFail($id);
+        $employee_types = EmployeeType::all();
 
-        return view('stations.edit', compact('station'));
+        return view('stations.edit', compact('station', 'employee_types'));
     }
 
     /**
