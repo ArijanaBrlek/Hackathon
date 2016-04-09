@@ -1,0 +1,48 @@
+.day-shift {
+    background-color: #EFD84F;
+}
+.day-off {
+    background-color: #108533;
+}
+
+.shift button {
+    width: 100%;
+}
+
+.night-shift {
+    background-color: #248BCC;
+}
+
+.no-shift button {
+    color: #c0c0c0;
+    background-color: #ffffff;
+    border-width: 0;
+}
+
+.no-shift {
+    background-color: black;
+}
+
+
+.no-shift button {
+    background-color: whitesmoke;
+}
+
+
+.width-14 {
+    width: 10%;
+}
+
+.black {
+    color: black;
+}
+
+#datatable_filter label {
+    text-align: right;
+    display: block;
+    width: 100%;
+}
+
+#datatable thead {
+    margin: 10px;
+}

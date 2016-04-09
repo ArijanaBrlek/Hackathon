@@ -1,17 +1,22 @@
-<div class="row no-padding no-margin">
-    <div class="col-sm-6 no-padding no-margin">
-        @if ($schedule->type == 'D')
-            @include('schedule.partials.day')
-        @endif
+@if ($schedule->type == 'D')
+    <div class="col-lg-6 col-md-6 col-sm-12 no-padding no-margin">
+        @include('schedule.partials.day')
     </div>
-    <div class="col-sm-6">
-        @if ($schedule->type == 'N')
-            @include('schedule.partials.night')
-        @endif
+    <div class="col-lg-6 col-md-6 col-sm-12 no-padding no-margin no-shift">
+        @include('schedule.partials.night_disabled')
     </div>
-</div>
+@endif
+@if ($schedule->type == 'N')
+    <div class="col-lg-6 col-md-6 col-sm-12 no-padding no-margin no-shift">
+        @include('schedule.partials.day_disabled')
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 no-padding no-margin ">
+        @include('schedule.partials.night')
+    </div>
+@endif
 
-<div class="col-lg-12 col-sm-12 no-padding no-margin">
+
+<div class="row col-lg-12 col-md-12 col-sm-12 no-padding no-margin">
     @if ($schedule->type == '_')
         @include('schedule.partials.dayoff')
     @endif

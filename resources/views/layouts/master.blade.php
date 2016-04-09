@@ -7,11 +7,14 @@
 	<title>Laravel CRUD App</title>
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet">
+
 	<style>
 		body {
 			padding-top: 70px;
 		}
 	</style>
+
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -52,7 +55,6 @@
 	    &copy; {{ date('Y') }}. Created by <a href="http://www.appzcoder.com">AppzCoder</a>
 	    <br/>
 	</div>
-
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
