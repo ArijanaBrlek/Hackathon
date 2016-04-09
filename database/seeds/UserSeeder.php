@@ -12,11 +12,22 @@ class UserSeeder extends Seeder
     public function run()
     {
         \Spatie\Permission\Models\Role::create(['name' => 'administrator']);
+        \Spatie\Permission\Models\Role::create(['name' => 'employee']);
 
-        DB::table('users')->insert([
-           'name' => 'Administrator',
+        $admin = \App\User::create([
+            'name' => 'Administrator',
             'email' => 'administrator@gmail.com',
             'password' => bcrypt('administrator'),
         ]);
+
+        $employee = \App\User::create([
+            'name' => 'Employee',
+            'email' => 'employee@gmail.com',
+            'password' => bcrypt('employee'),
+        ]);
+
+        $admin->assignRole('administrator');
+        $employee->assignRole('employee');
+
     }
 }
