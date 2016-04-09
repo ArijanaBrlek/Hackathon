@@ -46,3 +46,23 @@
 #datatable thead {
     margin: 10px;
 }
+
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0;
+    width: 100%;
+}
+.select2-container--default .select2-selection--multiple {
+    border-radius: 0;
+    width: 100%;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: 0;
+    height:auto;
+    font-size: 15px;
+}
+
+.full-width select {
+    width: 100%;
+}
