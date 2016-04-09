@@ -48,26 +48,24 @@
 
 @section('scripts')
     @parent
+
     <link href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ URL::asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
             var table =  $('#example').DataTable({
-                "ajax": '/ajax'
+                "ajax": '/ajax',
+                "paging": true,
             });
-
             table =  $('#example').DataTable();
             $('#example tbody').on( 'click', '.day-shift', function () {
                 var scheduleId = $(this).attr('data-id');
-                console.log(scheduleId);
                 $.getJSON('/modal/' + scheduleId, function(data) {
                     $('#myModal').replaceWith(data.data);
                     $('#myModal').modal('show');
                 });
-
-//                console.log(table.cell(this).data());
             } );
 
         } );

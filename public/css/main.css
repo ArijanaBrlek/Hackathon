@@ -158,3 +158,5 @@ a:after {
 	color: white
 }
 
+#my_table .pagination li {display: none;}
+#my_table .pagination li.prev, #my_table .pagination li.next {display: inline;}
