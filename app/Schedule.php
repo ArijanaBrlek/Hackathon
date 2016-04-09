@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Schedule whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Schedule whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property integer $team_type_id
+ * @method static \Illuminate\Database\Query\Builder|\App\Schedule whereTeamTypeId($value)
  */
 class Schedule extends Model
 {

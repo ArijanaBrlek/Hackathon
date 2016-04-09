@@ -16,6 +16,21 @@ class EmployeesAndStationsSeeder extends Seeder
             'address' => '10000 Zagreb'
         ]);
 
+        $station = \App\Station::create([
+           'name' => 'Hitna Služba Daruvar',
+            'address' => '31512 Daruvar'
+        ]);
+
+        $station = \App\Station::create([
+           'name' => 'Hitna Služba Torčec',
+            'address' => '69696 Torčec'
+        ]);
+
+        $station = \App\Station::create([
+           'name' => 'Hitna Služba Pula',
+            'address' => '51245 Pula'
+        ]);
+
         $user = \App\User::create([
             'name' => 'Ivan Ivić',
             'email' => 'ivan.ivić@gmail.com',
