@@ -62,9 +62,9 @@
                 {!! Form::label('station_id', 'Station: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     <div class="col-sm-6">
-                        <select name="secondary" class="form-control select2" multiple="multiple" data-placeholder="Select employee type">
+                        <select name="station_id" class="form-control select2" data-placeholder="Select employee type">
                             @foreach($stations as $station)
-                                <option value="{{ $station->id }}">{{ $station->name }}</option>
+                                <option value="{{ $station->id }}" {{ $station->id == $employee->station_id ? 'selected' : '' }}>{{ $station->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -89,6 +89,19 @@
                 <div class="col-sm-6">
                     {!! Form::text('remark', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('remark', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('preferences_employee_types', 'Preferred employee types: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    <div class="col-sm-6">
+                        <select name="preferences_employee_types[]" multiple="multiple" class="form-control select2" data-placeholder="Select employee types">
+                            @foreach($employee_types as $employee_type)
+                                <option value="{{ $employee_type->id }}" {{ in_array($employee_type->id, $employee->preferences_employee_types->pluck('employee_type_id')->toArray()) ? 'selected' : '' }}>{{ $employee_type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
 

@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Station whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Team[] $teams
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Employee[] $employees
+ * @property string $address
+ * @method static \Illuminate\Database\Query\Builder|\App\Station whereAddress($value)
  */
 class Station extends Model
 {

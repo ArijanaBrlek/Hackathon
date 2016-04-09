@@ -19,7 +19,7 @@
                                 <span><small>PREVIOUS WEEK</small></span>
                             </div>
                             <div class="col-sm-4 text-center">
-                                week 1
+                                Week <span id="current-week">1</span>/2016
                             </div>
                             <div class="col-sm-4 text-right">
                                 <a href="#" id="next-week"  data-week="2">
@@ -92,15 +92,22 @@
         $(function () {
             $('#next-week').click(function () {
                 currentWeek++;
+                updateWeek();
                 $('#datatable').DataTable().ajax.reload();
             });
 
             $('#previous-week').click(function () {
                 if (currentWeek > 1) {
                     currentWeek--;
+                    updateWeek();
                 }
                 $('#datatable').DataTable().ajax.reload();
             });
+
+            function updateWeek() {
+                $('#current-week').html(currentWeek);
+            }
+
         });
     </script>
     <script type="text/javascript" src="{{ URL::asset('plugins/select2/select2.min.js') }}"></script>

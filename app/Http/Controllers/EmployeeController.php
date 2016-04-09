@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EmployeeType;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -77,7 +78,8 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
 
         $stations = Station::all();
-        return view('employees.edit', compact('employee', 'stations'));
+        $employee_types = EmployeeType::all();
+        return view('employees.edit', compact('employee', 'stations', 'employee_types'));
     }
 
     /**
@@ -92,6 +94,16 @@ class EmployeeController extends Controller
         
         $employee = Employee::findOrFail($id);
         $employee->update($request->all());
+
+        $employee_type_ids = $request->get('preferences_employee_types', []);
+
+        $employee->preferences_employee_types()->delete();
+
+        foreach($employee_type_ids as $id) {
+            $employee->preferences_employee_types()->create([
+                'employee_type_id' => $id
+            ]);
+        }
 
         Session::flash('flash_message', 'Employee updated!');
 

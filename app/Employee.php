@@ -44,6 +44,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Employee extends Model
 {
+
+    protected $fillable = ['first_name', 'last_name', 'OIB', 'gender', 'address', 'city', 'station_id', 'phone', 'mobile', 'remark'];
+
     public function preferences_employee_types() {
         return $this->hasMany('App\PreferencesEmployeeType');
     }

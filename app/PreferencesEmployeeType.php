@@ -20,6 +20,8 @@ class PreferencesEmployeeType extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['employee_type_id'];
+
     public function employee_type() {
         return $this->belongsTo('App\EmployeeType');
     }

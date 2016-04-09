@@ -1,47 +1,54 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    Schedule
+    Plan
 @endsection
 
 @section('main-content')
 
     <div class="row">
         <div class="col-sm-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Responsive Hover Table</h3>
-                <br /><a href="#" id="previous-week" data-week="0">Previous week<br />
-                <a href="#" id="next-week" data-week="2">Next week</a>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+            <div class="box">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="box-tools">
+                            <div class="col-sm-4">
+                                <a href="#" id="previous-week" data-week="0">
+                                    <i class="fa fa-chevron-circle-left fa-2x black"></i></a>
+                                <br>
+                                <span><small>PREVIOUS WEEK</small></span>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                Week <span id="current-week">1</span>/2016
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <a href="#" id="next-week"  data-week="2">
+                                    <i class="fa fa-chevron-circle-right fa-2x black"></i></a>
+                                <br>
+                                <span><small>NEXT WEEK</small></span>
+                            </div>
 
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
                         </div>
-                    </div>
                 </div>
-            </div>
-            <div class="box-body table-responsive">
-                    <table id="example" class="table table-bordered">
+                <div class="box-body table-responsive">
+                    <table id="datatable" class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>MON</th>
-                            <th>TUE</th>
-                            <th>WED</th>
-                            <th>THU</th>
-                            <th>FRI</th>
-                            <th>SAT</th>
-                            <th>SUN</th>
+                            <th class="col-sm-2">Name</th>
+                            <th class="width-14">MON</th>
+                            <th class="width-14">TUE</th>
+                            <th class="width-14">WED</th>
+                            <th class="width-14">THU</th>
+                            <th class="width-14">FRI</th>
+                            <th class="width-14">SAT</th>
+                            <th class="width-14">SUN</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
-
+                </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -50,51 +57,48 @@
 
 @section('scripts')
     @parent
-
-    <link href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ URL::asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
-            var table =  $('#example').DataTable({
+        $(document).ready(function () {
+            var table = $('#datatable').DataTable({
 
-            "ajax": {
-                'url': '/plan/ajax',
-                'data': function () {
-                    return {week: currentWeek};
-                }
-            },
+                "ajax": {
+                    'url': '/plan/ajax',
+                    'data': function () {
+                        return {week: currentWeek};
+                    }
+                },
                 "paging": true,
+                "sort": true
             });
-//            table =  $('#example').DataTable();
-//            $('#example tbody').on( 'click', '.day-shift', function () {
-//                var scheduleId = $(this).attr('data-id');
-//                $.getJSON('/modal/' + scheduleId, function(data) {
-//                    $('#myModal').replaceWith(data.data);
-//                    $('#myModal').modal('show');
-//                });
-//            } );
 
-        } );
+        });
 
 
     </script>
 
     <script>
         var currentWeek = 1;
-        $(function() {
-            $('#next-week').click(function() {
-               currentWeek++;
-               $('#example').DataTable().ajax.reload();
+        $(function () {
+            $('#next-week').click(function () {
+                currentWeek++;
+                updateWeek();
+                $('#datatable').DataTable().ajax.reload();
             });
 
-            $('#previous-week').click(function() {
-                if(currentWeek > 1) {
+            $('#previous-week').click(function () {
+                if (currentWeek > 1) {
                     currentWeek--;
+                    updateWeek();
                 }
-                $('#example').DataTable().ajax.reload();
+                $('#datatable').DataTable().ajax.reload();
             });
+
+            function updateWeek() {
+                $('#current-week').html(currentWeek);
+            }
 
             $(document).on('change', '.plan-type', function() {
                 var planId = $(this).attr('data-plan-id');
@@ -104,7 +108,6 @@
                 });
             });
         });
-
     </script>
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ URL::asset('plugins/select2/select2.min.js') }}"></script>
