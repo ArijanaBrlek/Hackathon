@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/schedule', 'ScheduleController@index')->name('schedule');;
