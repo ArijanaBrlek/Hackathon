@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\PreferencesEmployeeType whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\PreferencesEmployeeType whereEmployeeId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\PreferencesEmployeeType whereEmployeeTypeId($value)
+ * @property-read \App\EmployeeType $employee_type
  */
 class PreferencesEmployeeType extends Model
 {

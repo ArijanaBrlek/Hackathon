@@ -39,6 +39,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\PreferencesEmployeeType[] $preferences_employee_type
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\PreferencesPlanType[] $preferences_plan_type
  * @property-read \App\Station $station
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\PreferencesEmployeeType[] $preferences_employee_types
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\PreferencesPlanType[] $preferences_plan_types
  */
 class Employee extends Model
 {

@@ -14,6 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\PreferencesPlanType whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\PreferencesPlanType whereEmployeeId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\PreferencesPlanType wherePlanTypeId($value)
+ * @property integer $year
+ * @property integer $week
+ * @property integer $day
+ * @property-read \App\PlanType $plan_type
+ * @method static \Illuminate\Database\Query\Builder|\App\PreferencesPlanType whereYear($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\PreferencesPlanType whereWeek($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\PreferencesPlanType whereDay($value)
  */
 class PreferencesPlanType extends Model
 {
