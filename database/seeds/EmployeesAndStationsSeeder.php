@@ -43,6 +43,22 @@ class EmployeesAndStationsSeeder extends Seeder
 
         $user_employee->assignRole('employee');
 
+        $primary = \App\TeamType::whereCode('0')->first();
+        $secondary = \App\TeamType::whereCode('1')->first();
 
+        foreach(['M', 'T', 'D', 'V'] as $employeeType) {
+            $station->teams()->create([
+                'employee_type_id' => \App\EmployeeType::whereCode($employeeType)->first()->id,
+                'team_type_id' => $primary->id
+            ]);
+        }
+
+        foreach(['T', 'V'] as $employeeType) {
+            $station->teams()->create([
+                'employee_type_id' => \App\EmployeeType::whereCode($employeeType)->first()->id,
+                'team_type_id' => $secondary->id
+            ]);
+        }
     }
+
 }

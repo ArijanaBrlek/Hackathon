@@ -18,8 +18,18 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Team whereStationId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Team whereTeamTypeId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Team whereEmployeeTypeId($value)
+ * @property-read \App\TeamType $teamType
+ * @property-read \App\EmployeeType $employeeType
  */
 class Team extends Model
 {
     public $timestamps = false;
+
+    public function team_type() {
+        return $this->belongsTo('App\TeamType');
+    }
+
+    public function employee_type() {
+        return $this->belongsTo('App\EmployeeType');
+    }
 }

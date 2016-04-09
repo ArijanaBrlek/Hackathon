@@ -16,8 +16,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Station whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Station whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Station whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Team[] $teams
  */
 class Station extends Model
 {
     protected $fillable = ['name'];
+
+    public function teams()
+    {
+        return $this->hasMany('App\Team');
+    }
 }
