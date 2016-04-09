@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use App\Station;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,51 @@ class DataController extends Controller
 
         //num of stations
         $stations = Station::all();
-        $m = $stations.count();
+        echo "<pre>";
+        echo $n."<br />";
+        echo $stations->count()."<br />";
 
         foreach ($stations as $station) {
+            $teams = $station->teams()->orderBy('team_type_id')->get();
+            $grouped = $teams->groupBy('team_type_id');
+
+            foreach($grouped as $key => $teams) {
+//                dump($team->team_type);
+                foreach($teams as $team) {
+                    echo $team->employee_type->code;
+                }
+                echo " ";
+            }
 
         }
+        echo "\n";
+
+        $employees = Employee::all();
+        foreach($employees as $employee) {
+            echo $employee->station_id;
+            echo " ";
+            $i = 0;
+
+            foreach($employee->preferences_employee_types as $pet) {
+                if($i == $n * 7) break;
+                echo $pet->employee_type->code;
+
+                ++$i;
+            }
+            echo " ";
+
+            $i = 0;
+            foreach($employee->preferences_plan_types as $ppt) {
+                if($i == $n * 7) break;
+
+                echo $ppt->plan_type->code;
+                ++$i;
+            }
+
+            echo "\n";
+        }
+
+        echo "</pre>";
 
 
     }

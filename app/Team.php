@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Team whereEmployeeTypeId($value)
  * @property-read \App\TeamType $teamType
  * @property-read \App\EmployeeType $employeeType
+ * @property-read \App\TeamType $team_type
+ * @property-read \App\EmployeeType $employee_type
  */
 class Team extends Model
 {
