@@ -54,10 +54,22 @@
 
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
-               "ajax": '/ajax'
+            var table =  $('#example').DataTable({
+                "ajax": '/ajax'
             });
+
+            table =  $('#example').DataTable();
+            $('#example tbody').on( 'click', '.day-shift', function () {
+                console.log(table.cell(this).data());
+            } );
+
         } );
 
+
     </script>
+
+    <script>
+
+    </script>
+
 @endsection

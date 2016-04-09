@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-sm-6">
-        Dnevna
+        @include('schedule.partials.day')
     </div>
     <div class="col-sm-6">
-        Noćna
+        @include('schedule.partials.night')
     </div>
 </div>
