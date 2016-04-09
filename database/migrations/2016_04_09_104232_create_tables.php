@@ -107,15 +107,18 @@ class CreateTables extends Migration
             $table->integer('year');
             $table->integer('week');
             $table->integer('day');
-            $table->integer('employee_id')->unsigned();
+            $table->integer('employee_id')->unsigned()->nullable();
             $table->foreign('employee_id')->references('id')->on('employees');
 
-            $table->integer('station_id')->unsigned();
+            $table->integer('station_id')->unsigned()->nullable();
             $table->foreign('station_id')->references('id')->on('stations');
 
-            $table->string('type');
-            $table->integer('employee_task_id')->unsigned();
+            $table->string('type')->nullable();
+            $table->integer('employee_task_id')->unsigned()->nullable();
             $table->foreign('employee_task_id')->references('id')->on('employee_types');
+
+            $table->integer('team_type_id')->unsigned()->nullable();
+            $table->foreign('team_type_id')->references('id')->on('team_types');
             $table->timestamps();
         });
     }

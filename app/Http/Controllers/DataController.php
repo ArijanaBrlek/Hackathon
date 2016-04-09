@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\EmployeeType;
+use App\Schedule;
 use App\Station;
+use App\Team;
+use App\TeamType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -72,7 +76,12 @@ class DataController extends Controller
 
         $path = base_path().'/public/output/output.txt';
         $e = Employee::all()->count();
+        $employees = Employee::all();
+        $stations = Station::all();
         $n = 0;
+
+        $days = 1;
+        $year = 2016;
 
         $handle = fopen($path, "r");
         if ($handle) {
@@ -81,16 +90,32 @@ class DataController extends Controller
                 $dayTasks = explode(" ", $line);
                 foreach ($dayTasks as $task) {
                     $task = trim($task);
+
                     if ($task == "_") {
-                        dump("day off");
+                        $stationId = null;
+                        $typeId = null;
+                        $shift = null;
+                        $taskCode = null;
+//                        dump("day off");
                     } else {
                         $param =  explode("-", $task);
                         $stationId = $param[0];
                         $typeId = $param[1];
                         $shift = $param[2];
                         $taskCode = $param[3];
-                        dump($stationId, $typeId, $shift, $taskCode);
+//                        dump($stationId, $typeId, $shift, $taskCode);
                     }
+
+                    Schedule::create([
+                        'year' => $year,
+                        'week' => ceil($days / 7),
+                        'day' => ($days % 7 == 0) ? 7 : ($days % 7),
+                        'employee_id' => $employees[$n-1]->id,
+                        'station_id' => $stationId ? $stations[$stationId]->id : null,
+                        'type' => $shift,
+                        'employee_task_id' => $taskCode ? EmployeeType::whereCode($taskCode)->first()->id : null,
+                        'team_type_id' => $typeId ? TeamType::whereCode($typeId)->first()->id : null
+                    ]);
                 }
 
             }
