@@ -7,28 +7,28 @@
 
 @section('main-content')
 
-    <h1>Stations <a href="{{ url('stations/create') }}" class="btn btn-primary pull-right btn-sm">Add New Station</a></h1>
+    <h1>Employees <a href="{{ url('employees/create') }}" class="btn btn-primary pull-right btn-sm">Add New Employee</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Name</th><th>Actions</th>
+                    <th>S.No</th><th>First Name</th><th>Last Name</th><th>OIB</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {{-- */$x=0;/* --}}
-            @foreach($stations as $item)
+            @foreach($employees as $item)
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('stations', $item->id) }}">{{ $item->name }}</a></td>
+                    <td><a href="{{ url('employees', $item->id) }}">{{ $item->first_name }}</a></td><td>{{ $item->last_name }}</td><td>{{ $item->OIB }}</td>
                     <td>
-                        <a href="{{ url('stations/' . $item->id . '/edit') }}">
+                        <a href="{{ url('employees/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['stations', $item->id],
+                            'url' => ['employees', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
@@ -38,7 +38,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $stations->render() !!} </div>
+        <div class="pagination"> {!! $employees->render() !!} </div>
     </div>
 
 @endsection

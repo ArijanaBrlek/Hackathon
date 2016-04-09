@@ -1,6 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('content')
+@section('htmlheader_title')
+    Stations
+@endsection
+
+
+@section('main-content')
 
     <h1>Edit Station</h1>
     <hr/>
@@ -17,7 +22,37 @@
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+                </div>
+
+                <div class="form-group {{ $errors->has('address') ? 'has-error' : ''}}">
+                    {!! Form::label('address', 'Address: ', ['class' => 'col-sm-3 control-label']) !!}
+                    <div class="col-sm-6">
+                        {!! Form::text('address', null, ['class' => 'form-control']) !!}
+                        {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('team1', 'Primary team: ', ['class' => 'col-sm-3 control-label']) !!}
+                    <div class="col-sm-6">
+                        <select name="primary" class="form-control select2" multiple="multiple" data-placeholder="Select employee type">
+                            @foreach($employee_types as $employee_type)
+                                <option value="{{ $employee_type->code }}">{{ $employee_type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('teamSecondary', 'Secondary team: ', ['class' => 'col-sm-3 control-label']) !!}
+                    <div class="col-sm-6">
+                        <select name="secondary" class="form-control select2" multiple="multiple" data-placeholder="Select employee type">
+                            @foreach($employee_types as $employee_type)
+                                <option value="{{ $employee_type->code }}" >{{ $employee_type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
 
     <div class="form-group">
@@ -34,5 +69,16 @@
             @endforeach
         </ul>
     @endif
+
+@endsection
+
+@section('scripts')
+    @parent
+    <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ URL::asset('plugins/select2/select2.min.js') }}"></script>
+    <script>
+        $(".select2").select2();
+    </script>
+
 
 @endsection

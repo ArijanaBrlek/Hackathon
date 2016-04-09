@@ -18,5 +18,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/schedule', 'ScheduleController@index')->name('schedule');;
+Route::get('/schedule', 'ScheduleController@index')->name('schedule');
 Route::resource('stations', 'StationsController');
+Route::resource('employees', 'EmployeeController');
+
+Route::get('/ajax', 'ScheduleController@ajax');

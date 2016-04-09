@@ -22,7 +22,6 @@ class DataController extends Controller
 
         foreach ($stations as $station) {
 
-
         }
 
 

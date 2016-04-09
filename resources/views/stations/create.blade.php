@@ -1,6 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('content')
+@section('htmlheader_title')
+    Stations
+@endsection
+
+
+@section('main-content')
 
     <h1>Create New Station</h1>
     <hr/>

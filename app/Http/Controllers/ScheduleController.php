@@ -83,4 +83,18 @@ class ScheduleController extends Controller
     {
         //
     }
+
+    public function ajax() {
+        $view = \View::make('schedule.ajax');
+        $bla = [];
+        for($i = 0; $i <= 3; ++$i) {
+            $bla[] = ["Nino",
+                $view->render(), $view->render(),$view->render(),$view->render(),$view->render(),$view->render(),$view->render()];
+        }
+        
+        $obj = new \StdClass();
+        $obj->data = $bla;
+
+        return json_encode($obj, JSON_UNESCAPED_SLASHES);
+    }
 }

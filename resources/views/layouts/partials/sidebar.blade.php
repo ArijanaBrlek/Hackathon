@@ -1,6 +1,5 @@
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
-
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
@@ -15,11 +14,14 @@
             </div>
         @endif
 
-        @hasrole('administrator')
-            @include('layouts.partials.admin.sidebar')
-        @else
-            @include('layouts.partials.employee.sidebar')
-        @endhasrole
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                @hasrole('administrator')
+                    @include('layouts.partials.admin.sidebar')
+                @else
+                    @include('layouts.partials.employee.sidebar')
+                @endhasrole
+            </ul>
 
 
     </section>

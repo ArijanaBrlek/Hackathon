@@ -12,7 +12,8 @@ class EmployeesAndStationsSeeder extends Seeder
     public function run()
     {
         $station = \App\Station::create([
-           'name' => 'Hitna Služba Klanjec'
+           'name' => 'Hitna Služba Zagreb',
+            'address' => '10000 Zagreb'
         ]);
 
         $user = \App\User::create([
