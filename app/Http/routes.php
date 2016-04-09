@@ -23,4 +23,5 @@ Route::resource('stations', 'StationsController');
 Route::resource('employees', 'EmployeeController');
 
 Route::get('/ajax', 'ScheduleController@ajax');
-Route::get('/data', 'DataController@createIputFile');
+Route::get('/data', 'DataController@createInputFile');
+Route::get('/read_data', 'DataController@readOutputFile');

@@ -10,7 +10,7 @@ use App\Http\Requests;
 
 class DataController extends Controller
 {
-    public function createIputFile()
+    public function createInputFile()
     {
         $filename = "";
 
@@ -39,6 +39,7 @@ class DataController extends Controller
         echo "\n";
 
         $employees = Employee::all();
+        echo $employees->count()."\n";
         foreach($employees as $employee) {
             echo $employee->station_id;
             echo " ";
@@ -65,6 +66,14 @@ class DataController extends Controller
 
         echo "</pre>";
 
+    }
 
+    public function readOutputFile() {
+        $e = Employee::all()->count();
+        $n = 4;
+
+        foreach(file('file.txt') as $line) {
+
+        }
     }
 }
