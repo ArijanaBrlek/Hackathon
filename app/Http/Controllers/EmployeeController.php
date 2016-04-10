@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Employee;
+use App\Schedule;
 use App\Station;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -25,6 +26,13 @@ class EmployeeController extends Controller
         $employees = Employee::paginate(15);
 
         return view('employees.index', compact('employees'));
+    }
+
+
+    public function report()
+    {
+        $employees = Employee::all();
+        return view('employees.report', compact('employees'));
     }
 
     /**
@@ -123,6 +131,36 @@ class EmployeeController extends Controller
 
         Session::flash('flash_message', 'Employee deleted!');
         return redirect('employees');
+    }
+
+
+    public function ajaxHours(Request $request) {
+
+        $matchThese = ['type' => 'D', 'type' => 'N'];
+        $results = Schedule::where($matchThese)->get();
+        $grouped = $results->groupBy('employee_id');
+
+        $data = [];
+        foreach($grouped as $employee_id => $schedules) {
+            $employee = Employee::find($employee_id);
+            $name = $employee->first_name . " " . $employee->last_name;
+            $hours = count($grouped->get($employee->id));
+            $row = [$name, $hours];
+            $data[] = $row;
+        }
+
+        $response = ['data' => $data];
+        return json_encode($response);
+    }
+
+    public function ajaxVacations(Request $request) {
+
+
+    }
+
+    public function ajaxOvertimes(Request $request) {
+
+
     }
 
 }

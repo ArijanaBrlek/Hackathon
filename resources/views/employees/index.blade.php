@@ -4,7 +4,6 @@
     Stations
 @endsection
 
-
 @section('main-content')
 
     <h1>Employees <a href="{{ url('employees/create') }}" class="btn btn-primary pull-right btn-sm">Add New Employee</a></h1>
@@ -42,3 +41,4 @@
     </div>
 
 @endsection
+

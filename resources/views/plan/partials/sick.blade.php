@@ -1,5 +1,5 @@
-<div class="shift plan-sick plan-type" data-code="B" data-plan-id="{{ $plan->id }}">
-    <button type="button" class="col-sm-3 btn btn-default btn-flat">
+<div class="plan plan-sick plan-type col-sm-6 no-padding no-margin" data-code="B" data-plan-id="{{ $plan->id }}">
+    <button type="button" class="btn btn-default btn-flat">
         <i class="fa fa-home"></i>
     </button>
 </div>

@@ -36,13 +36,13 @@
                         <thead>
                         <tr>
                             <th class="col-sm-2">Name</th>
-                            <th class="width-14">MON</th>
-                            <th class="width-14">TUE</th>
-                            <th class="width-14">WED</th>
-                            <th class="width-14">THU</th>
-                            <th class="width-14">FRI</th>
-                            <th class="width-14">SAT</th>
-                            <th class="width-14">SUN</th>
+                            <th class="">MON</th>
+                            <th class="">TUE</th>
+                            <th class="">WED</th>
+                            <th class="">THU</th>
+                            <th class="">FRI</th>
+                            <th class="">SAT</th>
+                            <th class="">SUN</th>
                         </tr>
                         </thead>
                         <tbody></tbody>

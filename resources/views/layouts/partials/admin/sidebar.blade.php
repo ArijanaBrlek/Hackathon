@@ -14,8 +14,12 @@
         <i class="fa fa-hospital-o"></i> <span>Stations</span>
     </a>
 </li>
+<li class="header">EMPLOYEES</li>
 <li>
     <a href="{{ route('employees.index')  }}">
-        <i class="fa fa-user-md"></i> <span>Employee</span>
+        <i class="fa fa-user-md"></i> <span>Manage</span>
+    </a>
+    <a href="{{ route('report')  }}">
+        <i class="fa fa-user-md"></i> <span>Report</span>
     </a>
 </li>

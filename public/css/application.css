@@ -85,3 +85,15 @@
 .paginate-arrow:hover {
     font-size: 18px;
 }
+.plan-available button.selected {
+    background-color: #99EB81;
+}
+.plan-vacation button.selected {
+    background-color: #D58B30;
+}
+.plan-dayoff button.selected {
+    background-color: #559EB1;
+}
+.plan-sick button.selected {
+    background-color: #CC3E30;
+}

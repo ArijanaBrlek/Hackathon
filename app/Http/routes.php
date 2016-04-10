@@ -20,7 +20,10 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/schedule', 'ScheduleController@index')->name('schedule');
 Route::resource('stations', 'StationsController');
+Route::get('/employees/report', 'EmployeeController@report')->name('report');
+Route::get('/employees/ajaxHours', 'EmployeeController@ajaxHours');
 Route::resource('employees', 'EmployeeController');
+
 
 Route::get('/ajax', 'ScheduleController@ajax');
 Route::get('/data', 'DataController@createInputFile');
@@ -30,3 +33,5 @@ Route::get('/modal/{schedule}', 'ScheduleController@modal');
 Route::get('/plan/ajax', 'PlanController@ajax');
 Route::resource('plans', 'PlanController');
 Route::post('/plan/update/{plan}', 'PlanController@updateAjax');
+
+
