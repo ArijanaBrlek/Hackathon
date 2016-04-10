@@ -10,6 +10,7 @@
     <h1>Edit Station</h1>
     <hr/>
 
+
     {!! Form::model($station, [
         'method' => 'PATCH',
         'url' => ['stations', $station->id],
@@ -74,7 +75,6 @@
 
 @section('scripts')
     @parent
-
     <script type="text/javascript" src="{{ URL::asset('plugins/select2/select2.min.js') }}"></script>
     <script>
         $(".select2").select2();

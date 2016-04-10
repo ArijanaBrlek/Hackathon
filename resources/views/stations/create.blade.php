@@ -7,8 +7,8 @@
 
 @section('main-content')
 
-    <h1>Create New Station</h1>
-    <hr/>
+        <!-- general form elements -->
+
 
     {!! Form::open(['url' => 'stations', 'class' => 'form-horizontal']) !!}
 
