@@ -14,13 +14,13 @@
 
             <div class="info-box-content">
                 <span class="info-box-text">Working hours</span>
-                <span class="info-box-number">163,921</span>
+                <span class="info-box-number">{{ $totalWorkingHours }}</span>
 
                 <div class="progress">
                     <div class="progress-bar" style="width: 40%"></div>
                 </div>
                   <span class="progress-description">
-                   Average per week: 38.5h
+                   Average per week: {{ $avgWorkingHours }}h
                   </span>
             </div>
             <!-- /.info-box-content -->

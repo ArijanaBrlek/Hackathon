@@ -72,7 +72,42 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrFail($id);
 
-        return view('employees.show', compact('employee'));
+        $matchThese = ['D', 'N'];
+        $results = Schedule::whereIn('type', $matchThese)->whereEmployeeId($employee->id);
+
+        $results = $results->get();
+
+        $data = [];
+        $name = $employee->first_name . " " . $employee->last_name;
+        $totalWorkingHours = count($results) * 12;
+        $avgWorkingHours = $totalWorkingHours / $results->groupBy('week')->count();
+
+        $matchThese = ['type' => 'D', 'type' => 'N'];
+        $results = Schedule::where($matchThese)->get();
+        $grouped = $results->groupBy('employee_id');
+
+        $data = [];
+        foreach($grouped as $employee_id => $schedules) {
+            $employee = Employee::find($employee_id);
+            $name = $employee->first_name . " " . $employee->last_name;
+            $weeks = $schedules->groupBy('week');
+            $overtimes = 0;
+            foreach($weeks as $week => $week_schedules) {
+                $hours = count($week_schedules) * 12;
+                if($hours > 40) {
+                    $overtimes += $hours - 40;
+                }
+            }
+
+            $row = [$name, $overtimes];
+            $data[] = $row;
+        }
+
+        $response = ['data' => $data];
+        return json_encode($response);
+
+
+        return view('employees.show', compact('employee', 'avgWorkingHours', 'totalWorkingHours'));
     }
 
     /**
