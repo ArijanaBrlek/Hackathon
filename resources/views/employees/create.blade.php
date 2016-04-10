@@ -4,7 +4,6 @@
     Stations
 @endsection
 
-
 @section('main-content')
 
     <div class="row">
