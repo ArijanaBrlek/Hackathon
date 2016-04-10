@@ -12,20 +12,18 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="box-tools">
-                            <div class="col-sm-4">
-                                <a href="#" id="previous-week" data-week="0">
-                                    <i class="fa fa-chevron-circle-left fa-2x black"></i></a>
-                                <br>
-                                <span><small>PREVIOUS WEEK</small></span>
-                            </div>
+                            <div class="col-sm-4"></div>
                             <div class="col-sm-4 text-center">
-                                Week <span id="current-week">1</span>/2016
+
+                                <a href="#" id="previous-week" class="paginate-arrow" data-week="0">
+                                    <i class="fa fa-chevron-left black"></i></a>
+                                <span class="week-title">
+                                    Week <span id="current-week">1</span>/2016
+                                </span>
+                                <a href="#" id="next-week" class="paginate-arrow" data-week="2">
+                                    <i class="fa fa-chevron-right black"></i></a>
                             </div>
                             <div class="col-sm-4 text-right">
-                                <a href="#" id="next-week"  data-week="2">
-                                    <i class="fa fa-chevron-circle-right fa-2x black"></i></a>
-                                <br>
-                                <span><small>NEXT WEEK</small></span>
                             </div>
 
                             </div>
