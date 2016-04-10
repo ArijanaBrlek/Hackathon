@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Employee;
+use App\PreferencesPlanType;
 use App\Schedule;
 use App\Station;
 use Illuminate\Http\Request;
@@ -144,7 +145,7 @@ class EmployeeController extends Controller
         foreach($grouped as $employee_id => $schedules) {
             $employee = Employee::find($employee_id);
             $name = $employee->first_name . " " . $employee->last_name;
-            $hours = count($grouped->get($employee->id));
+            $hours = count($grouped->get($employee->id)) * 12;
             $row = [$name, $hours];
             $data[] = $row;
         }
@@ -154,12 +155,57 @@ class EmployeeController extends Controller
     }
 
     public function ajaxVacations(Request $request) {
+        $matchThese = ['type' => '_'];
+        $results = Schedule::where($matchThese)->get();
+        $grouped = $results->groupBy('employee_id');
 
+        $data = [];
+        foreach($grouped as $employee_id => $schedules) {
+            $employee = Employee::find($employee_id);
+            $name = $employee->first_name . " " . $employee->last_name;
+            $hours = 0;
+            foreach($schedules as $schedule) {
+                $plan = PreferencesPlanType::where('year', 2016)
+                    ->where('week', $schedule->week)
+                    ->where('day', $schedule->day)
+                    ->first();
 
+                if($plan->plan_type->code == 'G') {
+                    $hours++;
+                }
+            }
+            $row = [$name, $hours];
+            $data[] = $row;
+        }
+
+        $response = ['data' => $data];
+        return json_encode($response);
     }
 
     public function ajaxOvertimes(Request $request) {
+        $matchThese = ['type' => 'D', 'type' => 'N'];
+        $results = Schedule::where($matchThese)->get();
+        $grouped = $results->groupBy('employee_id');
 
+        $data = [];
+        foreach($grouped as $employee_id => $schedules) {
+            $employee = Employee::find($employee_id);
+            $name = $employee->first_name . " " . $employee->last_name;
+            $weeks = $schedules->groupBy('week');
+            $overtimes = 0;
+            foreach($weeks as $week => $week_schedules) {
+                $hours = count($week_schedules) * 12;
+                if($hours > 40) {
+                    $overtimes += $hours - 40;
+                }
+            }
+
+            $row = [$name, $overtimes];
+            $data[] = $row;
+        }
+
+        $response = ['data' => $data];
+        return json_encode($response);
 
     }
 
