@@ -69,9 +69,6 @@
         </div>
         <!-- /.box-body -->
     </div>
-    <!-- /.box -->
-
-
 
 @endsection
 
