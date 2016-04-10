@@ -17,7 +17,7 @@ class ScheduleSeeder extends Seeder
         foreach($employees as $employee) {
             $year = 2016;
             $types = ['D', 'N', '_'];
-            for($week = 1; $week <= 4; ++$week) {
+            for($week = 1; $week <= 20; ++$week) {
                 for($day = 1; $day <= 7; ++$day) {
                     \App\Schedule::create([
                         'year' => $year,

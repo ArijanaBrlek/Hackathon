@@ -245,4 +245,23 @@ class EmployeeController extends Controller
         return json_encode($data);
     }
 
+    public function single(Request $request, Employee $employee) {
+        $starting_week = $request->get('week', 1);
+        $calendar = [];
+        for($i = $starting_week; $i < $starting_week + 4; ++$i) {
+            $schedules = Schedule::whereWeek($i)->whereEmployeeId($employee->id)->get();
+            $row = [];
+            $row[] = "Week " . $i;
+            foreach($schedules as $schedule) {
+                $view = $schedule->type;
+                $row[] = $view;
+            }
+            $calendar[] = $row;
+
+        }
+        $response = ['data' => $calendar];
+        return json_encode($response, JSON_UNESCAPED_SLASHES);
+
+    }
+
 }

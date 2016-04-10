@@ -154,12 +154,14 @@
     <script>
         $(document).ready(function () {
             var table = $('#datatable').DataTable({
-
-               /* "ajax": {
-                    'url': '/ajax'
+               "ajax": {
+                    'url': '/employees/single/{{ $employee->id }}',
+                   'data': function () {
+                       return {week: currentWeek};
+                   }
                 },
                 "paging": true,
-                "sort": true*/
+                "sort": true
             });
             table = $('#datatable').DataTable();
             $('#datatable tbody').on('click', '.shift', function () {
@@ -172,4 +174,27 @@
 
         });
 
+        var currentWeek = 1;
+        $(function () {
+            $('#next-week').click(function () {
+                currentWeek+=4;
+                updateWeek();
+                $('#datatable').DataTable().ajax.reload();
+            });
+
+            $('#previous-week').click(function () {
+                if (currentWeek > 1) {
+                    currentWeek-=4;
+                    updateWeek();
+                }
+                $('#datatable').DataTable().ajax.reload();
+            });
+
+            function updateWeek() {
+                $('#current-week').html(currentWeek);
+            }
+
+        });
     </script>
+
+@endsection
