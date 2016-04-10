@@ -36,9 +36,9 @@
                 <div class="form-group">
                     {!! Form::label('team1', 'Primary team: ', ['class' => 'col-sm-3 control-label']) !!}
                     <div class="col-sm-6">
-                        <select name="primary" class="form-control select2" multiple="multiple" data-placeholder="Select employee type">
+                        <select name="primary[]" class="form-control select2" multiple="multiple" data-placeholder="Select primary type">
                             @foreach($employee_types as $employee_type)
-                                <option value="{{ $employee_type->code }}">{{ $employee_type->name }}</option>
+                                <option value="{{ $employee_type->code }}" {{ in_array($employee_type->code, $primary_team_codes) ? 'selected' : '' }}>{{ $employee_type->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -47,9 +47,9 @@
                 <div class="form-group">
                     {!! Form::label('teamSecondary', 'Secondary team: ', ['class' => 'col-sm-3 control-label']) !!}
                     <div class="col-sm-6">
-                        <select name="secondary" class="form-control select2" multiple="multiple" data-placeholder="Select employee type">
+                        <select name="secondary[]" class="form-control select2" multiple="multiple" data-placeholder="Select secondary team">
                             @foreach($employee_types as $employee_type)
-                                <option value="{{ $employee_type->code }}" >{{ $employee_type->name }}</option>
+                                <option value="{{ $employee_type->code }}" {{ in_array($employee_type->code, $secondary_team_codes) ? 'selected' : '' }}>{{ $employee_type->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -77,7 +77,9 @@
     @parent
     <script type="text/javascript" src="{{ URL::asset('plugins/select2/select2.min.js') }}"></script>
     <script>
-        $(".select2").select2();
+        $(function() {
+            $(".select2").select2();
+        });
     </script>
 
 @endsection
