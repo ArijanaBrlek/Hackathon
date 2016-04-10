@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::action('HomeController@index'); //view('layouts.partials.app');
 });
 
 Route::auth();
