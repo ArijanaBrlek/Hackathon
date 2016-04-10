@@ -6,7 +6,7 @@
 
     @section('main-content')
 
-        <div class="row">
+        <section class="row">
             <div class="col-sm-offset-1 col-sm-10">
 
                 <div class="box box-primary">
@@ -164,7 +164,7 @@
 
                 </div>
             </div>
-        </div>
+        </section>
 
 @endsection
 
