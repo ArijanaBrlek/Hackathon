@@ -166,7 +166,7 @@
 
 
             var tableOvertimes = $('#datatable-overtimes').DataTable({
-                "ajax": '/employees/ajaxVacations',
+                "ajax": '/employees/ajaxOvertimes',
                 "paging": true,
                 "sort": true
             });

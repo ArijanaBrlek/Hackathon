@@ -22,6 +22,8 @@ Route::get('/schedule', 'ScheduleController@index')->name('schedule');
 Route::resource('stations', 'StationsController');
 Route::get('/employees/report', 'EmployeeController@report')->name('report');
 Route::get('/employees/ajaxHours', 'EmployeeController@ajaxHours');
+Route::get('/employees/ajaxVacations', 'EmployeeController@ajaxVacations');
+Route::get('/employees/ajaxOvertimes', 'EmployeeController@ajaxOvertimes');
 Route::resource('employees', 'EmployeeController');
 
 
