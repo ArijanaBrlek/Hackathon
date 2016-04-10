@@ -97,3 +97,6 @@
 .plan-sick button.selected {
     background-color: #CC3E30;
 }
+.icon-small {
+    font-size: 10px;
+}

@@ -73,7 +73,6 @@
 @endsection
 
 
-
 @section('scripts')
     @parent
     <script type="text/javascript" src="{{ URL::asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -81,14 +80,8 @@
 
     <script>
         $(document).ready(function () {
-
             $('#datatable').DataTable();
-
-
         });
-
-
-
     </script>
 
 
