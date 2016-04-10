@@ -58,4 +58,8 @@ class Employee extends Model
     public function station() {
         return $this->belongsTo('App\Station');
     }
+
+    public function schedules() {
+        return $this->hasMany('App\Schedule');
+    }
 }

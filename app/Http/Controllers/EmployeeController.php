@@ -212,6 +212,26 @@ class EmployeeController extends Controller
     public function ajax(Employee $employee) {
         $data = [];
         $data['station'] = $employee->station->name;
+        
+        $matchThese = ['type' => 'D', 'type' => 'N'];
+        $schedules = $employee->schedules()->where($matchThese)->get();
+
+        $sum = $schedules->count();
+
+        $pieData = [];
+        $grouped = $schedules->groupBy('station_id');
+
+        $colors = ['#f56954', '#00a65a', '#008080', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'];
+        foreach($grouped as $station_id => $station_schedules) {
+            $station = Station::find($station_id);
+            $pieData[] = [
+                'value' => $station_schedules->count() / $sum * 100,
+                'label' => $station->name,
+                'color' => $colors[rand(0, count($colors)-1)]
+            ];
+        }
+        
+        $data['pieData'] = $pieData;
 
         return json_encode($data);
     }
