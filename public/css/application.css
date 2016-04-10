@@ -33,6 +33,13 @@
     width: 10%;
 }
 
+
+.table-fixed{
+    table-layout: fixed;
+    width: 100%;
+}
+
+
 .black {
     color: black;
 }
@@ -99,4 +106,8 @@
 }
 .icon-small {
     font-size: 10px;
+}
+
+.shift button {
+    height: 70px;
 }
