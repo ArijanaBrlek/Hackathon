@@ -100,11 +100,12 @@
                 $('#current-week').html(currentWeek);
             }
 
-            $(document).on('change', '.plan-type', function() {
+            $(document).on('click', '.plan-type', function() {
                 var planId = $(this).attr('data-plan-id');
+                var code = $(this).attr('data-code');
 
                 $.post('/plan/update/' + planId, {
-                   plan_type_code: $(this).val()
+                   plan_type_code: code
                 });
             });
         });

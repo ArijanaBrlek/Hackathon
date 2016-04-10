@@ -8,16 +8,8 @@
 
             <div class="modal-body">
 
-                    {{ $schedule->id }}
-                    @foreach($stations as $station)
-                        {{ $station->id }}
-                    @endforeach
-                    @foreach($task_types as $task_type)
-                        {{ $task_type }}
-                    @endforeach
-
                     {{--{!! Form::model($station, ['method' => 'PATCH', 'url' => ['schedule', $station->id], 'class' => 'form-horizontal']) !!}--}}
-                    {!! Form::model($station, ['method' => 'PATCH', 'class' => '']) !!}
+                    {!! Form::model($schedule, ['method' => 'PATCH', 'class' => '']) !!}
 
                     <div class="form-group full-width">
                         {!! Form::label('stations', 'Station', ['class' => 'col-sm-3 control-label']) !!}
