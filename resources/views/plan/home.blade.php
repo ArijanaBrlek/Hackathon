@@ -12,24 +12,22 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="box-tools">
-                            <div class="col-sm-4">
-                                <a href="#" id="previous-week" data-week="0">
-                                    <i class="fa fa-chevron-circle-left fa-2x black"></i></a>
-                                <br>
-                                <span><small>PREVIOUS WEEK</small></span>
-                            </div>
+                            <div class="col-sm-4"></div>
                             <div class="col-sm-4 text-center">
-                                Week <span id="current-week">1</span>/2016
+
+                                <a href="#" id="previous-week" class="paginate-arrow" data-week="0">
+                                    <i class="fa fa-chevron-left black"></i></a>
+                                <span class="week-title">
+                                    Week <span id="current-week">1</span>/2016
+                                </span>
+                                <a href="#" id="next-week" class="paginate-arrow" data-week="2">
+                                    <i class="fa fa-chevron-right black"></i></a>
                             </div>
                             <div class="col-sm-4 text-right">
-                                <a href="#" id="next-week"  data-week="2">
-                                    <i class="fa fa-chevron-circle-right fa-2x black"></i></a>
-                                <br>
-                                <span><small>NEXT WEEK</small></span>
                             </div>
 
-                            </div>
                         </div>
+                    </div>
                 </div>
                 <div class="box-body table-responsive">
                     <table id="datatable" class="table table-bordered">
@@ -51,6 +49,12 @@
             </div>
         </div>
     </div>
+
+    <row>
+        <button class="btn btn-primary btn-flat" >
+            Generate scedule from plan
+        </button>
+    </row>
 
 
 @endsection
@@ -100,14 +104,23 @@
                 $('#current-week').html(currentWeek);
             }
 
-            $(document).on('click', '.plan-type', function() {
+
+            $(document).on('change', '.plan-type', function() {
+                               var planId = $(this).attr('data-plan-id');
+
+                                     $.post('/plan/update/' + planId, {
+                                                  plan_type_code: $(this).val()
+                                });
+                           });
+
+          /*  $(document).on('click', '.plan-type', function() {
                 var planId = $(this).attr('data-plan-id');
                 var code = $(this).attr('data-code');
 
                 $.post('/plan/update/' + planId, {
                    plan_type_code: code
                 });
-            });
+            });*/
         });
     </script>
     <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet">
