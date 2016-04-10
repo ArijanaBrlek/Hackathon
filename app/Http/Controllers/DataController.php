@@ -140,5 +140,6 @@ class DataController extends Controller
         } else {
         }
 
+        return \Redirect::route('schedule');
     }
 }
