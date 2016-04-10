@@ -1,26 +1,29 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('htmlheader_title')
-    Log in
+    Stations
 @endsection
 
-@section('content')
-<body class="hold-transition login-page">
+@section('main-content')
+
+    <div class="row">
+        <div class="col-sm-12">
+
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <a href="{{ url('/home') }}"><b>ER</b>Scheduler</a>
         </div><!-- /.login-logo -->
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
     <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
@@ -48,7 +51,7 @@
         </div>
     </form>
 
-    @include('auth.partials.social_login')
+
 
     <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
     <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
@@ -59,6 +62,11 @@
 
     @include('layouts.partials.scripts_auth')
 
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
     <script>
         $(function () {
             $('input').iCheck({
@@ -68,6 +76,4 @@
             });
         });
     </script>
-</body>
-
 @endsection

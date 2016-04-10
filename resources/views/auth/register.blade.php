@@ -1,15 +1,16 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('htmlheader_title')
     Register
 @endsection
 
-@section('content')
+
+@section('main-content')
 
     <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <a href="{{ url('/home') }}"><b>ER</b>Scheduler</a>
         </div>
 
         @if (count($errors) > 0)
@@ -57,23 +58,24 @@
                 </div>
             </form>
 
-            @include('auth.partials.social_login')
-
             <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
         </div><!-- /.form-box -->
     </div><!-- /.register-box -->
 
     @include('layouts.partials.scripts_auth')
 
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
-</body>
 
+
+@endsection
+
+@section('scripts')
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
 @endsection

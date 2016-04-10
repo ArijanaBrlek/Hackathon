@@ -24,7 +24,6 @@
             @endhasrole
         </ul>
 
-
     </section>
     <!-- /.sidebar -->
 </aside>
