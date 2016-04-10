@@ -227,7 +227,6 @@ class EmployeeController extends Controller
             $pieData[] = [
                 'value' => $station_schedules->count() / $sum * 100,
                 'label' => $station->name,
-                'color' => $colors[rand(0, count($colors)-1)]
             ];
         }
         

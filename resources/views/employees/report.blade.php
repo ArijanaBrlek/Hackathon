@@ -174,10 +174,23 @@
                 "sort": true
             });
 
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++ ) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
             var employeeId = $('#employee_id').val();
 
              $.getJSON('/employees/ajax/' + employeeId, function(data) {
                  $('#baseStation').html(data.station);
+
+                 for(var i = 0; i < data.pieData.length; ++i) {
+                     data.pieData[i].color = getRandomColor();
+                 }
 
                   pieChart.Doughnut(data.pieData, pieOptions);
              });
@@ -187,6 +200,10 @@
 
                 $.getJSON('/employees/ajax/' + employeeId, function(data) {
                    $('#baseStation').html(data.station);
+
+                    for(var i = 0; i < data.pieData.length; ++i) {
+                        data.pieData[i].color = getRandomColor();
+                    }
 
                     pieChart.Doughnut(data.pieData, pieOptions);
 
