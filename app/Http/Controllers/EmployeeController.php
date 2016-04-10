@@ -82,32 +82,47 @@ class EmployeeController extends Controller
         $totalWorkingHours = count($results) * 12;
         $avgWorkingHours = $totalWorkingHours / $results->groupBy('week')->count();
 
-//        $matchThese = ['type' => 'D', 'type' => 'N'];
-//        $results = Schedule::where($matchThese)->get();
-//        $grouped = $results->groupBy('employee_id');
-//
-//        $data = [];
-//        foreach($grouped as $employee_id => $schedules) {
-//            $employee = Employee::find($employee_id);
-//            $name = $employee->first_name . " " . $employee->last_name;
-//            $weeks = $schedules->groupBy('week');
-//            $overtimes = 0;
-//            foreach($weeks as $week => $week_schedules) {
-//                $hours = count($week_schedules) * 12;
-//                if($hours > 40) {
-//                    $overtimes += $hours - 40;
-//                }
-//            }
-//
-//            $row = [$name, $overtimes];
-//            $data[] = $row;
-//        }
-//
-//        $response = ['data' => $data];
-//        return json_encode($response);
+        $matchThese = ['D', 'N'];
+        $schedules = Schedule::whereIn('type', $matchThese)->whereEmployeeId($employee->id)->get();
 
+        $data = [];
+        $weeks = $schedules->groupBy('week');
+        $overtimes = 0;
+        foreach($weeks as $week => $week_schedules) {
+            $hours = count($week_schedules) * 12;
+            if($hours > 40) {
+                $overtimes += $hours - 40;
+            }
+        }
 
-        return view('employees.show', compact('employee', 'avgWorkingHours', 'totalWorkingHours'));
+        $totalOvertimes = $overtimes;
+        $avgOvertimes = $overtimes / $weeks->count();
+        
+        $matchThese = ['type' => '_'];
+        $results = Schedule::where($matchThese)->get();
+
+        $data = [];
+        $name = $employee->first_name . " " . $employee->last_name;
+        $hours = 0;
+        foreach($schedules as $schedule) {
+            $plan = PreferencesPlanType::where('year', 2016)
+                ->where('week', $schedule->week)
+                ->where('day', $schedule->day)
+                ->first();
+
+            if($plan->plan_type->code == 'G') {
+                $hours += 12;
+            }
+        }
+
+        $totalVacationHours = $hours;
+        $avgVacationHours = $hours / $weeks->count();
+
+        return view('employees.show',
+            compact(
+                'employee', 'avgWorkingHours',
+                'totalWorkingHours', 'totalOvertimes',
+                'avgOvertimes', 'totalVacationHours', 'avgVacationHours'));
     }
 
     /**

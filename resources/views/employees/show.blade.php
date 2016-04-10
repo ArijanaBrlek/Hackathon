@@ -33,13 +33,13 @@
 
             <div class="info-box-content">
                 <span class="info-box-text">Overtimes</span>
-                <span class="info-box-number">5,200</span>
+                <span class="info-box-number">{{ $totalOvertimes }}</span>
 
                 <div class="progress">
                     <div class="progress-bar" style="width: 50%"></div>
                 </div>
                   <span class="progress-description">
-                   Average: 3/5 per week
+                   Average: {{ $avgOvertimes }} per week
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -50,14 +50,14 @@
             <span class="info-box-icon"><i class="fa fa-plane"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text">Godišnji odmor</span>
-                <span class="info-box-number">92,050</span>
+                <span class="info-box-text">Vacation</span>
+                <span class="info-box-number">{{ $totalVacationHours }}</span>
 
                 <div class="progress">
                     <div class="progress-bar" style="width: 20%"></div>
                 </div>
                   <span class="progress-description">
-                    Used: 26/40
+
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -68,7 +68,7 @@
             <span class="info-box-icon"><i class="fa fa-heartbeat"></i></span>
 
             <div class="info-box-content">
-                <span class="info-box-text">Bolovanje</span>
+                <span class="info-box-text">Sick days</span>
                 <span class="info-box-number">114,381</span>
 
                 <div class="progress">
