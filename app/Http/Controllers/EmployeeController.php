@@ -288,8 +288,8 @@ class EmployeeController extends Controller
             $row = [];
             $row[] = "Week " . $i;
             foreach($schedules as $schedule) {
-                $view = $schedule->type;
-                $row[] = $view;
+                $view = \View::make('schedule.ajax', compact('schedule'));
+                $row[] = $view->render();
             }
             $calendar[] = $row;
 
