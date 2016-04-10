@@ -24,8 +24,8 @@ class DataController extends Controller
         //num of stations
         $stations = Station::all();
         echo "<pre>";
-        echo $n."<br />";
-        echo $stations->count()."<br />";
+        echo $n."\n";
+        echo $stations->count()."\n";
 
         foreach ($stations as $station) {
             $teams = $station->teams()->orderBy('team_type_id')->get();
@@ -38,9 +38,9 @@ class DataController extends Controller
                 }
                 echo " ";
             }
+            echo "\n";
 
         }
-        echo "\n";
 
         $employees = Employee::all();
         echo $employees->count()."\n";
