@@ -70,3 +70,18 @@
 .full-width select {
     width: 100%;
 }
+
+.week-title {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.paginate-arrow {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.paginate-arrow:hover {
+    font-size: 18px;
+}
