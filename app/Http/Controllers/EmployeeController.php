@@ -209,4 +209,11 @@ class EmployeeController extends Controller
 
     }
 
+    public function ajax(Employee $employee) {
+        $data = [];
+        $data['station'] = $employee->station->name;
+
+        return json_encode($data);
+    }
+
 }

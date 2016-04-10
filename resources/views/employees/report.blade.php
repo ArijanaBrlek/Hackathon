@@ -112,7 +112,7 @@
 
                         <div class="row">
                             <label class="col-sm-3">Employee</label>
-                            <select name="station_id" class="select2 col-sm-8" data-placeholder="Select employee">
+                            <select name="employee" id="employee_id" class="select2 col-sm-8" data-placeholder="Select employee">
                                 @foreach($employees as $employee)
                                     <option value="{{ $employee->id }}">{{ $employee->first_name  }} {{ $employee->last_name  }}</option>
                                 @endforeach
@@ -122,7 +122,7 @@
                         <div class="row">
                             <label class="col-sm-3">Base station: </label>
                             <div>
-                                <label id="baseStation" class="col-sm-9"> </label>
+                                <label id="baseStation" class="col-sm-9"></label>
                             </div>
                         </div>
                         <div class="row">
@@ -169,6 +169,20 @@
                 "ajax": '/employees/ajaxOvertimes',
                 "paging": true,
                 "sort": true
+            });
+
+            var employeeId = $('#employee_id').val();
+
+             $.getJSON('/employees/ajax/' + employeeId, function(data) {
+                $('#baseStation').html(data.station);
+             });
+
+            $('#employee_id').change(function() {
+               var employeeId = $(this).val();
+
+                $.getJSON('/employees/ajax/' + employeeId, function(data) {
+                   $('#baseStation').html(data.station);
+                });
             });
 
         });

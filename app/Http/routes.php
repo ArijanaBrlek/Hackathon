@@ -24,6 +24,7 @@ Route::get('/employees/report', 'EmployeeController@report')->name('report');
 Route::get('/employees/ajaxHours', 'EmployeeController@ajaxHours');
 Route::get('/employees/ajaxVacations', 'EmployeeController@ajaxVacations');
 Route::get('/employees/ajaxOvertimes', 'EmployeeController@ajaxOvertimes');
+Route::get('/employees/ajax/{employee}', 'EmployeeController@ajax');
 Route::resource('employees', 'EmployeeController');
 
 
