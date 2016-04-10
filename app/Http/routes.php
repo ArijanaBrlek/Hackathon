@@ -39,4 +39,6 @@ Route::get('/plan/ajax', 'PlanController@ajax');
 Route::resource('plans', 'PlanController');
 Route::post('/plan/update/{plan}', 'PlanController@updateAjax');
 
+Route::get('/generate_schedule', 'GenerateScheduleController@generate');
+
 

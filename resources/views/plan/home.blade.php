@@ -51,12 +51,13 @@
     </div>
 
     <row>
-        <button class="btn btn-primary btn-flat" >
-            Generate scedule from plan
-        </button>
+        <a href="/generate_schedule" class="btn btn-primary btn-flat" >
+            Start generating schedule from plan
+        </a>
+        <a href="/read_data" class="btn btn-primary btn-flat" >
+            Read algorithm data
+        </a>
     </row>
-
-
 @endsection
 
 @section('scripts')
