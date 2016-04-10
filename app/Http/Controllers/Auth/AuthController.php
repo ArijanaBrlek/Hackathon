@@ -28,7 +28,17 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
+
+    public function redirectPath()
+    {
+        // Logic that determines where to send the user
+        if (\Auth::user()->hasRole('administrator')) {
+            return '/schedule';
+        }
+
+        return '/profile/2';
+    }
 
     /**
      * Create a new authentication controller instance.
