@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="box box-danger">
+            <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">Overtime</h3>
 
@@ -70,7 +70,7 @@
         <section class="col-sm-6">
 
 
-            <div class="box box-danger">
+            <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Vacations</h3>
 
@@ -98,7 +98,7 @@
             </div>
 
 
-                <div class="box box-danger">
+                <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">Team statistics</h3>
 
