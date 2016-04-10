@@ -27,7 +27,7 @@
                     <button id="filter-working-hours">Apply</button>
 
                     <div class="box-body table-responsive">
-                        <table id="datatable-hours" class="table table-bordered">
+                        <table id="datatable-hours" class="table table-hover">
                             <thead>
                             <tr>
                                 <th class="col-sm-7">Name</th>
@@ -54,7 +54,7 @@
                 <div class="box-body">
 
                     <div class="box-body table-responsive">
-                        <table id="datatable-overtimes" class="table table-bordered">
+                        <table id="datatable-overtimes" class="table table-hover">
                             <thead>
                             <tr>
                                 <th class="col-sm-7">Name</th>
@@ -86,7 +86,7 @@
                 <div class="box-body">
 
                     <div class="box-body table-responsive">
-                        <table id="datatable-vacations" class="table table-bordered">
+                        <table id="datatable-vacations" class="table table-hover">
                             <thead>
                             <tr>
                                 <th class="col-sm-7">Name</th>
