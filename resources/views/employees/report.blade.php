@@ -14,7 +14,6 @@
             <div class="box box-danger">
                 <div class="box-header with-border">
                     <h3 class="box-title">Working hours</h3>
-
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -22,6 +21,10 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    Filter by weeks:
+                    <input type="number" placeholder="From" id="working-hours-from">
+                    <input type="number" placeholder="To" id="working-hours-to">
+                    <button id="filter-working-hours">Apply</button>
 
                     <div class="box-body table-responsive">
                         <table id="datatable-hours" class="table table-bordered">
@@ -148,12 +151,28 @@
     <script type="text/javascript" src="{{ URL::asset('plugins/chartjs/Chart.min.js') }}"></script>
 
     <script>
+        var workingHoursFrom = null;
+        var workingHoursTo = null;
+
         $(document).ready(function () {
 
             $(".select2").select2();
 
             var tableHours = $('#datatable-hours').DataTable({
-                "ajax": '/employees/ajaxHours',
+                "ajax": {
+                    'url': '/employees/ajaxHours',
+                    'data': function () {
+                        var data = {};
+                        if(workingHoursFrom) {
+                            data.from = workingHoursFrom;
+                        }
+
+                        if(workingHoursTo) {
+                            data.to = workingHoursTo;
+                        }
+                        return data;
+                    }
+                },
                 "paging": true,
                 "sort": true
             });
@@ -172,6 +191,13 @@
                 "ajax": '/employees/ajaxOvertimes',
                 "paging": true,
                 "sort": true
+            });
+
+            $('#filter-working-hours').click(function () {
+                workingHoursFrom = $('#working-hours-from').val();
+                workingHoursTo = $('#working-hours-to').val();
+
+                tableHours.ajax.reload();
             });
 
             function getRandomColor() {

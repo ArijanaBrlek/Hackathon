@@ -136,9 +136,20 @@ class EmployeeController extends Controller
 
 
     public function ajaxHours(Request $request) {
+        $from = $request->get('from');
+        $to = $request->get('to');
 
-        $matchThese = ['type' => 'D', 'type' => 'N'];
-        $results = Schedule::where($matchThese)->get();
+        debug($from, $to);
+        $matchThese = ['D', 'N'];
+        $results = Schedule::whereIn('type', $matchThese);
+        if($from) {
+            $results = $results->where('week', '>=', $from);
+        }
+        if($to) {
+            $results = $results->where('week', '<=', $to);
+        }
+
+        $results = $results->get();
         $grouped = $results->groupBy('employee_id');
 
         $data = [];
@@ -221,7 +232,6 @@ class EmployeeController extends Controller
         $pieData = [];
         $grouped = $schedules->groupBy('station_id');
 
-        $colors = ['#f56954', '#00a65a', '#008080', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'];
         foreach($grouped as $station_id => $station_schedules) {
             $station = Station::find($station_id);
             $pieData[] = [
