@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\EmployeeType;
 use App\PlanType;
 use App\Schedule;
 use App\Station;
+use App\TeamType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -114,6 +116,31 @@ class ScheduleController extends Controller
         $plan_types = PlanType::all();
         $task_types = ['D', 'N', '_'];
         $response = ['data' => \View::make('schedule.partials.modal', compact('schedule', 'stations', 'task_types', 'plan_types'))->render()];
+        return json_encode($response, JSON_UNESCAPED_SLASHES);
+    }
+
+    public function updateAjax(Request $request, Schedule $schedule) {
+        $status = $request->get('status');
+        $station_id = $request->get('station');
+        $team = $request->get('team');
+        $employee_type = $request->get('employee_type');
+//        debug($team);
+//        debug(TeamType::whereCode($team)->first()->id);
+        if($status == '_') {
+            $schedule->station_id = null;
+            $schedule->type = $status;
+            $schedule->employee_task_id = null;
+            $schedule->team_type_id = null;
+        } else {
+            $schedule->station_id = $station_id;
+            $schedule->type = $status;
+            $schedule->employee_task_id = EmployeeType::whereCode($employee_type)->first()->id;
+            $schedule->team_type_id = TeamType::whereCode($team)->first()->id;
+        }
+        $schedule->update();
+
+        $view = \View::make('schedule.ajax', compact('schedule'));
+        $response = ['data' => $view->render()];
         return json_encode($response, JSON_UNESCAPED_SLASHES);
     }
 }
