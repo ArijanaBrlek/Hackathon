@@ -7,6 +7,9 @@
         </select>
     </div>
 </form>
+
+
+
 {{--<div class="row no-padding no-margin">--}}
     {{--<div class="col-sm-6 no-padding no-margin">--}}
         {{--@if ($schedule->type == 'D')--}}
